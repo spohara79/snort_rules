@@ -10,7 +10,7 @@
 #  and use fast_pattern = '1,20' to use the offset/length modifier as fast_pattern1,20;
 
 import re
-from OrderedDict import OrderedDict
+from collections import OrderedDict
 
 class SnortRule(object):
     header_keys = ['action','protocol', 'srcip','srcport','direction','dstip','dstport']
