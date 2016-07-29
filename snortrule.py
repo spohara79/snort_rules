@@ -83,13 +83,13 @@ class SnortRule(object):
             key_val = getattr(self, key)
             key = key.rstrip("0123456789")
             if key not in self.header_keys:
-            # make sure we parse keywords that have no args correctly
-            if key in self.argless_keywords:
-                #handle the fast_pattern exception
-                if key == 'fast_pattern' and not isinstance(key_val, int):
-                    keyword_string += "%s:%s; " % (key, key_val)
+                # make sure we parse keywords that have no args correctly
+                if key in self.argless_keywords:
+                    #handle the fast_pattern exception
+                    if key == 'fast_pattern' and not isinstance(key_val, int):
+                        keyword_string += "%s:%s; " % (key, key_val)
+                    else:
+                        keyword_string += "%s; " % (key)
                 else:
-                    keyword_string += "%s; " % (key)
-            else:
-                keyword_string += "%s:%s; " % (key, key_val)
+                    keyword_string += "%s:%s; " % (key, key_val)
         return "%s %s %s %s %s %s %s (%s)" % (self.action, self.protocol, self.srcip, self.srcport, self.direction, self.dstip, self.dstport, keyword_string[:-1])
