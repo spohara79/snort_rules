@@ -1,13 +1,7 @@
-#  Simple snort class that can parse snort rule keywords and modifiers and print them
-#  when reading a snort rule in, it will put duplicate names (e.g., 'content'keyword)
-#  into a numbered attribute (first has no number, each subsequent is continued from previous
-#  where the count starts at 1.  if you had a rule like 'alert tcp any any -> any any (msg:"bogus zipper"; content:"bogus"; content:"zipper")
-#  content would point to bogus and content2 would point to zipper; it uses an ordered dict to align
-#  so modifiers stay with their repsective keywords.
-#
-#  for use of fast_pattern, set fast_pattern = 1 for just the fast_pattern; keyword
-#  use fast_pattern = 'only' to set to fast_pattern:only;
-#  and use fast_pattern = '1,20' to use the offset/length modifier as fast_pattern1,20;
+""" snortrule.py - Simple snort class that can parse snort rule keywords and modifiers """
+__author__ = "Sean O'Hara"
+__email__ = "spohara@gmail.com"
+__version__ = "0.0.3"
 
 import re
 from collections import OrderedDict
