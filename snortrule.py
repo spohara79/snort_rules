@@ -55,7 +55,7 @@ class SnortRule(object):
             setattr(self, header, value)
 
         rule_options = rule[len(' '.join(rule_header))+2:-1]
-        rgx = re.compile('(\w+):(.*?);|(\w+);');
+        rgx = re.compile('(\w+):\"([^\"]*?)\";|(\w+);|(\w+):(.*?);');
         matches = re.findall(rgx, rule_options)
         # loop through all the keywords first so we can handle multiple keywords
         # and handle aligning content modifiers
